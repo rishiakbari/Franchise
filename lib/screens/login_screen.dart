@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 CustomTextFormField(
                   hintText: "Enter your Username",
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                   controller: nameController,
                 ),
                 CustomTextFormField(
