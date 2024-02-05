@@ -21,6 +21,9 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.outLine = false,
     this.fillColor,
+    this.height, 
+    this.validator, 
+    this.cursorHeight,
   });
 
   final String? hintText;
@@ -38,14 +41,23 @@ class CustomTextFormField extends StatelessWidget {
   final Function()? onTap;
   final Function(String)? onChanged;
   final Color? fillColor;
+  final double? height;
+  final String? Function(String?)? validator;
+  final double? cursorHeight;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height ?? 45,
+      //  decoration: BoxDecoration(
+      //   border: Border.all(color: Colorz.main, width: 1),
+      //   borderRadius:BorderRadius.circular(5), 
+      //  ),
       margin: const EdgeInsets.symmetric(
         vertical: 7.0,
       ),
       child: TextFormField(
+        cursorHeight: cursorHeight ?? 25.0,
         controller: controller,
         focusNode: focusNode,
         obscureText: obscureText ?? false,
@@ -53,6 +65,8 @@ class CustomTextFormField extends StatelessWidget {
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
         decoration: InputDecoration(
+          // isDense: true, 
+          contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
           hintText: hintText,
           hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: Colorz.textSecondary,
@@ -61,23 +75,28 @@ class CustomTextFormField extends StatelessWidget {
           labelText: labelText,
           labelStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: Colorz.textSecondary,
-
               ),
           border: outLine
               ? Theme.of(context).inputDecorationTheme.border
               : OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                  borderSide: BorderSide.none),
-          enabledBorder: outLine
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(
+                    color: Colorz.main)
+                ),
+          enabledBorder: outLine 
               ? Theme.of(context).inputDecorationTheme.border
               : OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                  borderSide: BorderSide.none),
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(
+                    color: Colorz.main)
+                ),
           focusedBorder: outLine
               ? Theme.of(context).inputDecorationTheme.border
               : OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                  borderSide: BorderSide.none),
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(
+                    color: Colorz.main)
+                ),
           fillColor: fillColor ?? Colorz.textFormFieldBackground,
           filled: outLine ? false : true,
           suffixIcon: suffixIcon,
@@ -90,6 +109,7 @@ class CustomTextFormField extends StatelessWidget {
         readOnly: readOnly,
         onTap: onTap,
         onChanged: onChanged,
+        validator: validator,
         onTapOutside: (event) {
           FocusScopeNode currentFocus = FocusScope.of(context);
           if (!currentFocus.hasPrimaryFocus &&
