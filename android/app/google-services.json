@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "391705535917",
+    "project_id": "taptrendfrenchise",
+    "storage_bucket": "taptrendfrenchise.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391705535917:android:66b9a2c78190746d0f2d24",
+        "android_client_info": {
+          "package_name": "com.example.franchise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTKX8h9BM_lmy_IVvAeH7hV8g0GOSmMzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
